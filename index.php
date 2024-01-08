@@ -21,16 +21,19 @@
             <a class="nav-link active" aria-current="page" href="#">Inicio</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Ver Colección</a>
+            <a class="nav-link" href="">Ver Colección</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Añadir Carta</a>
+            <a class="nav-link" href="add_card.php">Añadir Carta</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Modificar Carta</a>
+            <a class="nav-link" href="edit_card.php">Modificar Carta</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Eliminar Carta</a>
+            <a class="nav-link" href="delete_card.php">Eliminar Carta</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="pruebas.php">Pruebas</a>
         </li>
     </ul>
     

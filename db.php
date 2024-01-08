@@ -5,12 +5,16 @@ function openBd()
     $username = "root";
     $password = "root";
 
-    $conexion = new PDO("mysql:host=$servername;dbname=pokemons", $username, $password);
-    // set the PDO error mode to exception
-    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conexion->exec("set names utf8");
+    try {
+        $conexion = new PDO("mysql:host=$servername;dbname=pokemons", $username, $password);
+        // set the PDO error mode to exception
+        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conexion->exec("set names utf8");
 
-    return $conexion;
+        return $conexion;
+    } catch (PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+    }
 
 }
 
@@ -50,6 +54,6 @@ function insertPokemon($nombre, $descripcion, $imagen_url, $region_id)
     $sentencia->execute();
 
     $conexion = closeDb();
-} 
+}
 
 ?>
