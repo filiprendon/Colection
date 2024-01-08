@@ -72,7 +72,7 @@ INSERT INTO Tipo (nombre) VALUES
 
 -- Insertar datos en la tabla 'Pokemon'
 INSERT INTO Pokemon (nombre, descripcion, imagen_url, region_id) VALUES
-('Charizard', 'Descripción de Charizard.', 'imagen_charizard.jpg', 1),
+('Charizard', 'Descripción de Charizard.', '/jp.jpeg', 1),
 ('Blastoise', 'Descripción de Blastoise.', 'imagen_blastoise.jpg', 1),
 ('Venusaur', 'Descripción de Venusaur.', 'imagen_venusaur.jpg', 1),
 ('Pikachu', 'Descripción de Pikachu.', 'imagen_pikachu.jpg', 2),

@@ -1,3 +1,8 @@
+<?php
+require_once('./db.php');
+
+$tipos = selectTipo();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -29,14 +35,18 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="cbxCurso" class="col-sm-2 col-form-label">Ciclo</label>
+                        <label for="cbxCurso" class="col-sm-2 col-form-label">Tipo</label>
                         <div class="col-sm-10">
-                            <select name="cbxCurso" class="form-select" id="cbxCurso">
-                                <option value="daw2a">DAW2A</option>
-                                <option value="daw2b">DAW2B</option>
+                            <select name="cbxCurso[]" class="form-select" id="cbxCurso" multiple>
+                                <?php foreach ($tipos as $tipo) { ?>
+                                    <option value="<?php echo $tipo['id']; ?>">
+                                        <?php echo $tipo['nombre']; ?>
+                                    </option>
+                                <?php } ?>
                             </select>
                         </div>
                     </div>
+
 
                     <div class="form-group row">
                         <label for="rbTurno" class="col-sm-2 col-form-label">Turno</label>

@@ -41,6 +41,23 @@ function selectPokemons()
     return $resultado;
 }
 
+function selectTipo()
+{
+    $conexion = openBd();
+
+
+    $sentenciaText = "select * from Tipo";
+
+    $sentencia = $conexion->prepare($sentenciaText);
+    $sentencia->execute();
+
+    $resultado = $sentencia->fetchAll();
+
+    $conexion = closeDb();
+
+    return $resultado;
+}
+
 function insertPokemon($nombre, $descripcion, $imagen_url, $region_id)
 {
     $conexion = openBd();
