@@ -24,7 +24,7 @@
                         <label for="txtNombre" class="col-sm-2 col-form-label">Nombre</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="txtNombre" id="txtNombre"
-                                placeholder="Introduce el nombre">
+                                placeholder="Nombre del pokemon">
                         </div>
                     </div>
 
