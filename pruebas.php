@@ -13,6 +13,27 @@ $pokemons = selectPokemons();
 </head>
 <body>
 
+<ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="pokemons.php">Ver Colección</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="add_card.php">Añadir Carta</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="edit_card.php">Modificar Carta</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="delete_card.php">Eliminar Carta</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="pruebas.php">Pruebas</a>
+        </li>
+    </ul>
+
     <div class="container">
         <table>
             <tr>
@@ -28,7 +49,7 @@ $pokemons = selectPokemons();
                 <td><?php echo $pokemon['id']; ?></td>
                 <td><?php echo $pokemon['nombre']; ?></td>
                 <td><?php echo $pokemon['descripcion']; ?></td>
-                <td><?php echo $pokemon['imagen_url']; ?></td>  
+                <td><img src="img/<?php echo $pokemon['imagen_url']; ?>"></td>  
                 <td><?php echo $pokemon['region_id']; ?></td>                
             </tr>
             <?php } ?>

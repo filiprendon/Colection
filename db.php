@@ -58,6 +58,23 @@ function selectTipo()
     return $resultado;
 }
 
+function selectRegion()
+{
+    $conexion = openBd();
+
+
+    $sentenciaText = "select * from Region";
+
+    $sentencia = $conexion->prepare($sentenciaText);
+    $sentencia->execute();
+
+    $resultado = $sentencia->fetchAll();
+
+    $conexion = closeDb();
+
+    return $resultado;
+}
+
 function insertPokemon($nombre, $descripcion, $imagen_url, $region_id)
 {
     $conexion = openBd();

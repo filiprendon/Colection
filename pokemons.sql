@@ -27,7 +27,7 @@ CREATE TABLE Pokemon (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255),
     descripcion TEXT,
-    imagen_url VARCHAR(255),
+    imagen_url BLOB,
     region_id INT,
     FOREIGN KEY (region_id) REFERENCES Region(id)
 );
