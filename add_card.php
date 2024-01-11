@@ -54,7 +54,7 @@ $regiones = selectRegion();
 
     <div class="centered-container">
         <h1 class="mb-4">Añadir Pokémon</h1>
-        <form action="pokemons.php" method="POST">
+        <form action="pokemons.php" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="txtNombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" name="txtNombre" id="txtNombre" placeholder="Nombre del Pokémon">

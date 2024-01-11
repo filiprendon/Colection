@@ -35,6 +35,38 @@
         </li>
     </ul>
 
+
+    <?php
+    
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
+        $nombre = $_POST['txtNombre'];
+        $tipos = $_POST['tip'];
+        $regiones = $_POST['region']; 
+        $descripcion = $_POST['descripcion'];
+        $imagen = $_POST['imagen'];
+        
+    
+        echo '<div class="row row-cols-1 row-cols-md-3 g-4">';
+        echo '<div class="col">';
+        echo '<div class="card h-100">';
+        echo '<img src="..." class="card-img-top" alt="...">';
+        echo '<div class="card-body">';
+        echo '<h5 class="card-title">' . $nombre . '</h5>';
+        echo '<p class="card-text">' . $imagen . '</p>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+    }
+    
+        
+        
+        
+        ?>
+
+  
+
 </body>
 
 </html>
