@@ -1,5 +1,5 @@
 <?php
-function openBd()
+function openDb()
 {
     $servername = "localhost";
     $username = "root";
@@ -26,7 +26,7 @@ function closeDb()
 
 function selectPokemons()
 {
-    $conexion = openBd();
+    $conexion = openDb();
 
 
     $sentenciaText = "select * from Pokemon";
@@ -43,7 +43,7 @@ function selectPokemons()
 
 function selectTipo()
 {
-    $conexion = openBd();
+    $conexion = openDb();
 
 
     $sentenciaText = "select * from Tipo";
@@ -60,7 +60,7 @@ function selectTipo()
 
 function selectRegion()
 {
-    $conexion = openBd();
+    $conexion = openDb();
 
 
     $sentenciaText = "select * from Region";
@@ -77,7 +77,7 @@ function selectRegion()
 
 function insertPokemon($nombre, $descripcion, $imagen_url, $region_id)
 {
-    $conexion = openBd();
+    $conexion = openDb();
 
     $sentenciaText = "INSERT INTO Pokemon (nombre, descripcion, imagen_url, region_id) VALUES (:nombre, :descripcion, :imagen_url, :region_id)";
     $sentencia = $conexion->prepare($sentenciaText);

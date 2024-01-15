@@ -1,3 +1,12 @@
+<?php
+require_once('./db.php');
+
+$pokemons = selectPokemons();
+$region = selectRegion();
+$tipos = selectTipo();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,36 +45,34 @@
     </ul>
 
 
-    <?php
-    
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
-        $nombre = $_POST['txtNombre'];
-        $tipos = $_POST['tip'];
-        $regiones = $_POST['region']; 
-        $descripcion = $_POST['descripcion'];
-        $imagen = $_POST['imagen'];
-        
-    
-        echo '<div class="row row-cols-1 row-cols-md-3 g-4">';
-        echo '<div class="col">';
-        echo '<div class="card h-100">';
-        echo '<img src="..." class="card-img-top" alt="...">';
-        echo '<div class="card-body">';
-        echo '<h5 class="card-title">' . $nombre . '</h5>';
-        echo '<p class="card-text">' . $imagen . '</p>';
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
-    }
-    
-        
-        
-        
-        ?>
 
-  
+    <?php
+foreach ($pokemons as $pokemon) {
+    echo '
+    <div class="card">
+        <img src="/img'. htmlspecialchars($pokemon['imagen_url']) .'" class="card-img-top" alt="Imagen del Pokémon">
+        <div class="card-body">
+            <h5 class="card-title">'. htmlspecialchars($pokemon['nombre']) .'</h5>
+            <p class="card-text">'. htmlspecialchars($pokemon['descripcion']) .'</p>
+            <p class="card-text">Tipos:';
+            
+    // Recorre el conjunto de resultados de tipos y muestra cada tipo
+    foreach ($tipos as $tipo) {
+        echo ' ' . htmlspecialchars($tipo['nombre']);
+    }
+
+    echo '</p>
+            <p class="card-text"><small class="text-body-secondary">Región: '. htmlspecialchars($pokemon['region_id']) .'</small></p>
+        </div>
+    </div>
+    ';
+}
+?>
+
+
+
+
+
 
 </body>
 
