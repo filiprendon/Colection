@@ -46,28 +46,34 @@ $tipos = selectTipo();
 
 
 
-    <?php
-foreach ($pokemons as $pokemon) {
-    echo '
-    <div class="card">
-        <img src="/img'. htmlspecialchars($pokemon['imagen_url']) .'" class="card-img-top" alt="Imagen del Pokémon">
-        <div class="card-body">
-            <h5 class="card-title">'. htmlspecialchars($pokemon['nombre']) .'</h5>
-            <p class="card-text">'. htmlspecialchars($pokemon['descripcion']) .'</p>
-            <p class="card-text">Tipos:';
-            
-    // Recorre el conjunto de resultados de tipos y muestra cada tipo
-    foreach ($tipos as $tipo) {
-        echo ' ' . htmlspecialchars($tipo['nombre']);
-    }
-
-    echo '</p>
-            <p class="card-text"><small class="text-body-secondary">Región: '. htmlspecialchars($pokemon['region_id']) .'</small></p>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <?php foreach ($pokemons as $pokemon) { ?>
+        <div class="col">
+            <div class="card w-75">
+                <img src="./img<?php echo ($pokemon['imagen_url']);?>" class="card-img-top" alt="<?php echo ($pokemon['nombre']);?>">
+                <div class="card-body">
+                    <h5 class="card-title">
+                    <?php echo ($pokemon['nombre']);?>
+                    </h5>
+                    <h6 class="card-text">Tipo:
+                    <?php foreach ($tipos as $tipo) { 
+                         echo ($tipo['nombre']);
+                         } ?>
+                    </h6>
+                    <p class="card-text">
+                    <?php echo($pokemon['region_id']) ?>
+                    </p>
+                  
+                    <div class="position-absolute bottom-0 end-0 p-2">
+                        <button type="button" class="btn btn-dark">Editar</button>
+                        <button type="button" class="btn btn-danger">Borrar</button>
+                    </div>
+                </div>
+            </div>
         </div>
+        
+        <?php } ?>
     </div>
-    ';
-}
-?>
 
 
 

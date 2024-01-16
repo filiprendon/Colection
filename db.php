@@ -90,4 +90,20 @@ function insertPokemon($nombre, $descripcion, $imagen_url, $region_id)
     $conexion = closeDb();
 }
 
-?>
+function insertRegion($nombre)
+{
+    $conexion = openDb();
+
+    $sentenciaText = "INSERT INTO Region (nombre) VALUES (:nombre)";
+    $sentencia = $conexion->prepare($sentenciaText);
+    $sentencia->bindParam(':nombre', $nombre);
+    $sentencia->execute();
+
+    $conexion = closeDb();
+}
+// function deletePokemon($nombre, $descripcion, $imagen_url, $region_id){
+//     $conexion = openDb();
+
+
+// }
+

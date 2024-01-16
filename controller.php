@@ -8,4 +8,11 @@ if (isset($_POST['insert']))
     header('Location: ./pokemons.php');
     exit();
 }
-?>
+
+if (isset($_POST['insert']))
+{
+    insertRegion($_POST['nombre']);
+
+    header('Location: ./pokemons.php');
+    exit();
+}
