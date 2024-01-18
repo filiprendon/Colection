@@ -60,10 +60,12 @@ $tipos = selectTipo();
                          echo ($tipo['nombre']);
                          } ?>
                     </h6>
-                    <p class="card-text">
+                    <h6 class="card-text">Región:
                     <?php echo($pokemon['region_id']) ?>
+                    </h6>
+                    <p class="card-text">
+                    <?php echo($pokemon['descripcion']) ?>
                     </p>
-                  
                     <div class="position-absolute bottom-0 end-0 p-2">
                         <button type="button" class="btn btn-dark">Editar</button>
                         <button type="button" class="btn btn-danger">Borrar</button>
