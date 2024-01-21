@@ -46,10 +46,10 @@ $tipos = selectTipo();
 
 
 
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row row-cols-md-3 g-4">
     <?php foreach ($pokemons as $pokemon) { ?>
         <div class="col">
-            <div class="card w-75">
+            <div class="card w-75" data-tilt>
                 <img src="./img<?php echo ($pokemon['imagen_url']);?>" class="card-img-top" alt="<?php echo ($pokemon['nombre']);?>">
                 <div class="card-body">
                     <h5 class="card-title">
@@ -61,15 +61,19 @@ $tipos = selectTipo();
                          } ?>
                     </h6>
                     <h6 class="card-text">Región:
-                    <?php echo($pokemon['region_id']) ?>
+                    <?php echo($pokemon['nombre_region']) ?>
                     </h6>
                     <p class="card-text">
                     <?php echo($pokemon['descripcion']) ?>
                     </p>
-                    <div class="position-absolute bottom-0 end-0 p-2">
-                        <button type="button" class="btn btn-dark">Editar</button>
-                        <button type="button" class="btn btn-danger">Borrar</button>
-                    </div>
+                    <form action="controller.php" method="post">
+                        <div class="position-absolute bottom-0 end-0 p-2">
+                            <input type="hidden" name="id" value="<?php echo ($pokemon['id']); ?>">
+                            <button type="submit" class="btn btn-dark" name="update">Editar</button>
+                            <button type="submit" class="btn btn-danger" name="delete">Borrar</button>
+                        </div>
+                    </form>
+                    
                 </div>
             </div>
         </div>
@@ -81,7 +85,7 @@ $tipos = selectTipo();
 
 
 
-
+<script src="vanilla-tilt.js"></script>
 </body>
 
 </html>

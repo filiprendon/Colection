@@ -3,7 +3,8 @@ function openDb()
 {
     $servername = "localhost";
     $username = "root";
-    $password = "root";
+    $password = "mysql";
+    // $password = "root";
 
     try {
         $conexion = new PDO("mysql:host=$servername;dbname=pokemons", $username, $password);
@@ -27,10 +28,8 @@ function closeDb()
 function selectPokemons()
 {
     $conexion = openDb();
-
-
-    $sentenciaText = "select * from Pokemon";
-
+    $sentenciaText = "SELECT Pokemon.*, Region.nombre AS nombre_region FROM Pokemon
+                      INNER JOIN Region ON Pokemon.region_id = Region.id";
     $sentencia = $conexion->prepare($sentenciaText);
     $sentencia->execute();
 
@@ -40,6 +39,7 @@ function selectPokemons()
 
     return $resultado;
 }
+
 
 function selectTipo()
 {
@@ -101,9 +101,34 @@ function insertRegion($nombre)
 
     $conexion = closeDb();
 }
-// function deletePokemon($nombre, $descripcion, $imagen_url, $region_id){
-//     $conexion = openDb();
+function deletePokemon($id){
+    $conexion = openDb();
 
+    $sentenciaText = "DELETE FROM Pokemon where id = :id";
+    $sentencia = $conexion->prepare($sentenciaText);
+    $sentencia->bindParam(':id', $id);
+    $sentencia->execute();
 
-// }
+    $conexion = closeDb();
 
+}
+
+function updatePokemon($id, $nombre, $descripcion, $imagen_url, $region_id){
+    
+    $sentenciaText = "UPDATE Pokemon SET nombre = :nombre, descripcion = :descripcion, imagen_url = :imagen_url, region_id = :region_id WHERE id = :id";
+    $sentencia = $conexion->prepare($sentenciaText);
+    $sentencia->bindParam(':id', $id);
+    $sentencia->bindParam(':nombre', $nombre);
+    $sentencia->bindParam(':descripcion', $descripcion);
+    $sentencia->bindParam(':imagen_url', $imagen_url);
+    $sentencia->bindParam(':region_id', $region_id);
+    // $sentencia->execute();
+    if ($sentencia->execute()) {
+        echo "fue un exito";
+    } else {
+        
+        print_r($sentencia->errorInfo());
+    }
+
+    $conexion = closeDb();
+}
