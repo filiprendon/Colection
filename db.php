@@ -3,8 +3,8 @@ function openDb()
 {
     $servername = "localhost";
     $username = "root";
-    $password = "mysql";
-    // $password = "root";
+    // $password = "mysql";
+    $password = "root";
 
     try {
         $conexion = new PDO("mysql:host=$servername;dbname=pokemons", $username, $password);
@@ -113,22 +113,22 @@ function deletePokemon($id){
 
 }
 
-function updatePokemon($id, $nombre, $descripcion, $imagen_url, $region_id){
+// function updatePokemon($id, $nombre, $descripcion, $imagen_url, $region_id){
     
-    $sentenciaText = "UPDATE Pokemon SET nombre = :nombre, descripcion = :descripcion, imagen_url = :imagen_url, region_id = :region_id WHERE id = :id";
-    $sentencia = $conexion->prepare($sentenciaText);
-    $sentencia->bindParam(':id', $id);
-    $sentencia->bindParam(':nombre', $nombre);
-    $sentencia->bindParam(':descripcion', $descripcion);
-    $sentencia->bindParam(':imagen_url', $imagen_url);
-    $sentencia->bindParam(':region_id', $region_id);
-    // $sentencia->execute();
-    if ($sentencia->execute()) {
-        echo "fue un exito";
-    } else {
+//     $sentenciaText = "UPDATE Pokemon SET nombre = :nombre, descripcion = :descripcion, imagen_url = :imagen_url, region_id = :region_id WHERE id = :id";
+//     $sentencia = $conexion->prepare($sentenciaText);
+//     $sentencia->bindParam(':id', $id);
+//     $sentencia->bindParam(':nombre', $nombre);
+//     $sentencia->bindParam(':descripcion', $descripcion);
+//     $sentencia->bindParam(':imagen_url', $imagen_url);
+//     $sentencia->bindParam(':region_id', $region_id);
+//     // $sentencia->execute();
+//     if ($sentencia->execute()) {
+//         echo "fue un exito";
+//     } else {
         
-        print_r($sentencia->errorInfo());
-    }
+//         print_r($sentencia->errorInfo());
+//     }
 
-    $conexion = closeDb();
-}
+//     $conexion = closeDb();
+// }

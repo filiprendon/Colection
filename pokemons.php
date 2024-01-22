@@ -50,7 +50,7 @@ $tipos = selectTipo();
     <?php foreach ($pokemons as $pokemon) { ?>
         <div class="col">
             <div class="card w-75" data-tilt>
-                <img src="./img<?php echo ($pokemon['imagen_url']);?>" class="card-img-top" alt="<?php echo ($pokemon['nombre']);?>">
+            <img src="<?php echo $pokemon['imagen_url']; ?>" class="card-img-top" alt="<?php echo $pokemon['nombre']; ?>">
                 <div class="card-body">
                     <h5 class="card-title">
                     <?php echo ($pokemon['nombre']);?>
