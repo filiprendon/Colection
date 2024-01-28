@@ -31,6 +31,6 @@ if (isset($_POST['update']))
     $id = $_POST['id'];
     updatePokemon($id, $_POST['nombre'], $_POST['descripcion'], $_POST['imagen_url'], $_POST['region_id']);
 
-    header('Location: ./pokemons.php');
+    header('Location: ./edit_card.php');
     exit();
 }

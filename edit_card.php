@@ -46,9 +46,6 @@ $regiones = selectRegion();
         <li class="nav-item">
             <a class="nav-link" href="delete_card.php">Eliminar Carta</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="pruebas.php">Pruebas</a>
-        </li>
     </ul>
 
 

@@ -21,7 +21,7 @@ $tipos = selectTipo();
         crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body style ="overflow-x: hidden;">
 
     <ul class="nav justify-content-center">
         <li class="nav-item">
@@ -48,7 +48,7 @@ $tipos = selectTipo();
 
     <div class="row row-cols-md-3 g-4">
     <?php foreach ($pokemons as $pokemon) { ?>
-        <div class="col">
+        <div class="d-flex justify-content-center">
             <div class="card w-75" data-tilt>
             <img src="<?php echo $pokemon['imagen_url']; ?>" class="card-img-top" alt="<?php echo $pokemon['nombre']; ?>">
                 <div class="card-body">

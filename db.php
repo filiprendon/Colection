@@ -115,6 +115,8 @@ function deletePokemon($id){
 
 function updatePokemon($id, $nombre, $descripcion, $imagen_url, $region_id){
     
+    $conexion = openDb();
+
     $sentenciaText = "UPDATE Pokemon SET nombre = :nombre, descripcion = :descripcion, imagen_url = :imagen_url, region_id = :region_id WHERE id = :id";
     $sentencia = $conexion->prepare($sentenciaText);
     $sentencia->bindParam(':id', $id);
