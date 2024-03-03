@@ -31,9 +31,9 @@ $regiones = selectRegion();
 <body>
 
     <ul class="nav justify-content-center">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-        </li>
+        </li> -->
         <li class="nav-item">
             <a class="nav-link" href="pokemons.php">Ver Colección</a>
         </li>
@@ -43,9 +43,9 @@ $regiones = selectRegion();
         <li class="nav-item">
             <a class="nav-link" href="edit_card.php">Modificar Carta</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" href="delete_card.php">Eliminar Carta</a>
-        </li>
+        </li> -->
     </ul>
 
 
@@ -53,8 +53,8 @@ $regiones = selectRegion();
         <h1 class="mb-4">Editar Pokémon</h1>
         <form action="controller.php" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del Pokémon">
+                <label for="nombre" class="form-label">ID del pokemon</label>
+                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Id del pokemon a editar">
             </div>
 
             <div class="mb-3">

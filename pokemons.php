@@ -24,9 +24,9 @@ $tipos = selectTipo();
 <body style ="overflow-x: hidden;">
 
     <ul class="nav justify-content-center">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-        </li>
+        </li> -->
         <li class="nav-item">
             <a class="nav-link" href="pokemons.php">Ver Colección</a>
         </li>
@@ -36,12 +36,12 @@ $tipos = selectTipo();
         <li class="nav-item">
             <a class="nav-link" href="edit_card.php">Modificar Carta</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" href="delete_card.php">Eliminar Carta</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="pruebas.php">Pruebas</a>
-        </li>
+        </li> -->
     </ul>
 
 
@@ -53,7 +53,9 @@ $tipos = selectTipo();
             <img src="<?php echo $pokemon['imagen_url']; ?>" class="card-img-top" alt="<?php echo $pokemon['nombre']; ?>">
                 <div class="card-body">
                     <h5 class="card-title">
+                        Nombre: 
                     <?php echo ($pokemon['nombre']);?>
+                    <br><h5>ID: <?php echo ($pokemon['id']); ?></h5>
                     </h5>
                     <h6 class="card-text">Tipo:
                     <?php foreach ($tipos as $tipo) { 

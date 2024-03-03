@@ -31,9 +31,9 @@ $regiones = selectRegion();
 <body>
 
     <ul class="nav justify-content-center">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-        </li>
+        </li> -->
         <li class="nav-item">
             <a class="nav-link" href="pokemons.php">Ver Colección</a>
         </li>
@@ -43,9 +43,9 @@ $regiones = selectRegion();
         <li class="nav-item">
             <a class="nav-link" href="edit_card.php">Modificar Carta</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" href="delete_card.php">Eliminar Carta</a>
-        </li>
+        </li> -->
     </ul>
 
 
