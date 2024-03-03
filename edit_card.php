@@ -1,5 +1,6 @@
 <?php
 require_once('./db.php');
+// require_once('./pokemons.php');
 
 $tipos = selectTipo();
 $regiones = selectRegion();
@@ -48,13 +49,29 @@ $regiones = selectRegion();
         </li> -->
     </ul>
 
+    <?php
+    if (isset($_POST['update'])) {
+        $id = $_POST['id'];
+        $nombre = $_POST['nombre'];
+        $tipo = $_POST['tipo'];
+        $region = $_POST['region'];
+        $descripcion = $_POST['description'];
+        $imagen_url = $_POST['imagen_url'];
+
+        $sql = "UPDATE Pokemon SET nombre = '$nombre', descripcion = '$descripcion', imagen_url = '$imagen_url', region_id = '$region_id' WHERE id = '$id'";
+        $result = mysqli_query($conexion, $sql);
+        if($result){
+            echo "Carta actualizada correctamente";
+        }
+    }
+    ?>
 
     <div class="centered-container">
         <h1 class="mb-4">Editar Pokémon</h1>
         <form action="controller.php" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
-                <label for="nombre" class="form-label">ID del pokemon</label>
-                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Id del pokemon a editar">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del Pokémon">
             </div>
 
             <div class="mb-3">
