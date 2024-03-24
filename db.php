@@ -90,6 +90,7 @@ function insertPokemon($nombre, $descripcion, $imagen_url, $region_id)
     $conexion = closeDb();
 }
 
+
 function insertRegion($nombre)
 {
     $conexion = openDb();
