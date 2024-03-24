@@ -59,7 +59,7 @@ $regiones = selectRegion();
 
             <div class="mb-3">
                 <label for="nombre" class="form-label">Tipo</label>
-                <select name="tipo[]" class="form-select" id="tipo" multiple>
+                <select name="tipo[]" class="form-select" id="tipo">
                     <?php foreach ($tipos as $tipo) { ?>
                         <option value="<?php echo $tipo['id']; ?>">
                             <?php echo $tipo['nombre']; ?>

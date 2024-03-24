@@ -1,5 +1,5 @@
 <?php
-require_once('./db.php');
+require_once ('./db.php');
 
 $pokemons = selectPokemons();
 $region = selectRegion();
@@ -62,9 +62,11 @@ $tipos = selectTipo();
                             </h5>
                         </h5>
                         <h6 class="card-text">Tipo:
-                            <?php foreach ($tipos as $tipo) {
-                                echo ($tipo['nombre']);
-                            } ?>
+                            <?php 
+                            // foreach ($tipos as $tipo) {
+                                echo ($pokemon['tipo']);
+                            // }
+                             ?>
                         </h6>
                         <h6 class="card-text">Región:
                             <?php echo ($pokemon['nombre_region']) ?>
