@@ -1,5 +1,5 @@
 <?php
-require_once('./db.php');
+require_once ('./db.php');
 
 $tipos = selectTipo();
 $regiones = selectRegion();
@@ -40,9 +40,9 @@ $regiones = selectRegion();
         <li class="nav-item">
             <a class="nav-link" href="add_card.php">Añadir Carta</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" href="edit_card.php">Modificar Carta</a>
-        </li>
+        </li> -->
         <!-- <li class="nav-item">
             <a class="nav-link" href="delete_card.php">Eliminar Carta</a>
         </li> -->
@@ -67,6 +67,7 @@ $regiones = selectRegion();
                     <?php } ?>
                 </select>
             </div>
+
 
             <div class="mb-3">
                 <label for="region_id" class="form-label">Región</label>

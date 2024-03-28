@@ -23,9 +23,9 @@
         <li class="nav-item">
             <a class="nav-link" href="add_card.php">Añadir Carta</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" href="edit_card.php">Modificar Carta</a>
-        </li>
+        </li> -->
     </ul>
     
 

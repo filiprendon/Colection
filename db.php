@@ -113,19 +113,40 @@ function deletePokemon($id){
     $conexion = closeDb();
 
 }
-
-function updatePokemon($id, $nombre, $descripcion, $imagen_url, $region_id){
-    
+function updatePokemon($pokemon_id, $nombre, $descripcion, $imagen_url, $region_id)
+{
     $conexion = openDb();
-
-    $sentenciaText = "UPDATE Pokemon SET nombre = :nombre, descripcion = :descripcion, imagen_url = :imagen_url, region_id = :region_id WHERE id = :id";
+    if ($imagen_url) {
+        $sentenciaText = "UPDATE Pokemon SET nombre = :nombre, descripcion = :descripcion, imagen_url = :imagen_url, region_id = :region_id WHERE id = :pokemon_id";
+    } else {
+        $sentenciaText = "UPDATE Pokemon SET nombre = :nombre, descripcion = :descripcion, region_id = :region_id WHERE id = :pokemon_id";
+    }
+    
     $sentencia = $conexion->prepare($sentenciaText);
-    $sentencia->bindParam(':id', $id);
+    $sentencia->bindParam(':pokemon_id', $pokemon_id);
     $sentencia->bindParam(':nombre', $nombre);
     $sentencia->bindParam(':descripcion', $descripcion);
-    $sentencia->bindParam(':imagen_url', $imagen_url);
+    if ($imagen_url) {
+        $sentencia->bindParam(':imagen_url', $imagen_url);
+    }
     $sentencia->bindParam(':region_id', $region_id);
     $sentencia->execute();
 
     $conexion = closeDb();
+}
+
+function getPokemonById($pokemon_id)
+{
+    $conexion = openDb();
+
+    $sentenciaText = "SELECT * FROM Pokemon WHERE id = :pokemon_id";
+    $sentencia = $conexion->prepare($sentenciaText);
+    $sentencia->bindParam(':pokemon_id', $pokemon_id);
+    $sentencia->execute();
+
+    $pokemon = $sentencia->fetch(PDO::FETCH_ASSOC);
+
+    $conexion = closeDb();
+
+    return $pokemon;
 }

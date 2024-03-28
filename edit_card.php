@@ -1,17 +1,25 @@
 <?php
 require_once('./db.php');
-// require_once('./pokemons.php');
 
+if(isset($_GET['id'])) {
+    $pokemon_id = $_GET['id'];
+} else {
+    header('Location: ./pokemons.php');
+    exit();
+}
+
+$pokemon = getPokemonById($pokemon_id);
 $tipos = selectTipo();
 $regiones = selectRegion();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Añadir Pokémon</title>
+    <title>Editar Pokémon</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -32,53 +40,31 @@ $regiones = selectRegion();
 <body>
 
     <ul class="nav justify-content-center">
-        <!-- <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-        </li> -->
         <li class="nav-item">
             <a class="nav-link" href="pokemons.php">Ver Colección</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="add_card.php">Añadir Carta</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="edit_card.php">Modificar Carta</a>
-        </li>
         <!-- <li class="nav-item">
-            <a class="nav-link" href="delete_card.php">Eliminar Carta</a>
+            <a class="nav-link" href="edit_card.php">Modificar Carta</a>
         </li> -->
     </ul>
-
-    <?php
-    if (isset($_POST['submit'])) {
-        $id = $_POST['id'];
-        $nombre = $_POST['nombre'];
-        $tipo = $_POST['tipo'];
-        $region = $_POST['region'];
-        $descripcion = $_POST['description'];
-        $imagen_url = $_POST['imagen_url'];
-
-        $sql = "UPDATE Pokemon SET nombre = '$nombre', descripcion = '$descripcion', imagen_url = '$imagen_url', region_id = '$region_id' WHERE id = '$id'";
-        $result = mysqli_query($conexion, $sql);
-        if($result){
-            header("Location: pokemons.php?msg=Pokemon Updated");
-        }
-    }
-    ?>
 
     <div class="centered-container">
         <h1 class="mb-4">Editar Pokémon</h1>
         <form action="controller.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<?php echo $pokemon_id; ?>">
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del Pokémon">
+                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del Pokémon" value="<?php echo $pokemon['nombre']; ?>">
             </div>
 
             <div class="mb-3">
-                <label for="nombre" class="form-label">Tipo</label>
-                <select name="tipo[]" class="form-select" id="tipo" multiple>
+                <label for="tipo" class="form-label">Tipo</label>
+                <select name="tipo" class="form-select" id="tipo">
                     <?php foreach ($tipos as $tipo) { ?>
-                        <option value="<?php echo $tipo['id']; ?>">
+                        <option value="<?php echo $tipo['id']; ?>" <?php if ($tipo['id'] == $pokemon['tipo_id']) echo 'selected'; ?>>
                             <?php echo $tipo['nombre']; ?>
                         </option>
                     <?php } ?>
@@ -89,7 +75,7 @@ $regiones = selectRegion();
                 <label for="region_id" class="form-label">Región</label>
                 <select name="region_id" class="form-select" id="region_id">
                     <?php foreach ($regiones as $region) { ?>
-                        <option value="<?php echo $region['id']; ?>">
+                        <option value="<?php echo $region['id']; ?>" <?php if ($region['id'] == $pokemon['region_id']) echo 'selected'; ?>>
                             <?php echo $region['nombre']; ?>
                         </option>
                     <?php } ?>
@@ -99,8 +85,7 @@ $regiones = selectRegion();
             <div class="mb-3">
                 <label for="descripcion" class="form-label">Descripción</label>
                 <div class="form-floating">
-                    <textarea class="form-control" name="descripcion" placeholder="Describe al Pokémon"
-                        id="descripcion"></textarea>
+                    <textarea class="form-control" name="descripcion" placeholder="Describe al Pokémon" id="descripcion"><?php echo $pokemon['descripcion']; ?></textarea>
                 </div>
             </div>
 
@@ -112,8 +97,8 @@ $regiones = selectRegion();
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary" name="submit">Aceptar</button>
-            <button type="submit" class="btn btn-secondary">Cancelar</button>
+            <button type="submit" class="btn btn-primary" name="update">Guardar cambios</button>
+            <a href="pokemons.php" class="btn btn-secondary">Cancelar</a>
         </form>
 
     </div>

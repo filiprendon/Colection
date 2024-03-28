@@ -1,5 +1,5 @@
 <?php
-require_once('./db.php');
+require_once ('./db.php');
 
 $pokemons = selectPokemons();
 $region = selectRegion();
@@ -33,9 +33,9 @@ $tipos = selectTipo();
         <li class="nav-item">
             <a class="nav-link" href="add_card.php">Añadir Carta</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" href="edit_card.php">Modificar Carta</a>
-        </li>
+        </li> -->
         <!-- <li class="nav-item">
             <a class="nav-link" href="delete_card.php">Eliminar Carta</a>
         </li>
@@ -72,11 +72,11 @@ $tipos = selectTipo();
                         <p class="card-text">
                             <?php echo ($pokemon['descripcion']) ?>
                         </p>
-                        <a href="edit_card.php?id=<?php echo $pokemon['id']; ?>" class="btn btn-dark">Editar</a>
+
                         <form action="controller.php" method="post">
                             <div class="position-absolute bottom-0 end-0 p-2">
                                 <input type="hidden" name="id" value="<?php echo $pokemon['id']; ?>">
-                                
+                                <a href="edit_card.php?id=<?php echo $pokemon['id']; ?>" class="btn btn-dark">Editar</a>
                                 <button type="submit" class="btn btn-danger" name="delete">Borrar</button>
                             </div>
 

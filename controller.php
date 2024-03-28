@@ -17,6 +17,7 @@ if (isset($_POST['insert'])) {
 }
 
 
+
 if (isset($_POST['delete']))
 {
     deletePokemon($_POST['id']);
@@ -25,11 +26,25 @@ if (isset($_POST['delete']))
     exit();
 }
 
-if (isset($_POST['submit']))
-{
-    $id = $_POST['id'];
-    updatePokemon($id, $_POST['nombre'], $_POST['descripcion'], $_POST['imagen_url'], $_POST['region_id']);
 
-    header('Location: pokemons.php?msg=Pokemon Updated');
+if (isset($_POST['update'])) {
+    $pokemon_id = $_POST['id'];
+    $nombre = $_POST['nombre'];
+    $descripcion = $_POST['descripcion'];
+    $region_id = $_POST['region_id'];
+
+    // Solo se actualiza si hay una nueva imagen
+    if ($_FILES['imagen_url']['size'] > 0) {
+        $targetDirectory = 'img/';
+        $targetFileName = $targetDirectory . basename($_FILES['imagen_url']['name']);
+        move_uploaded_file($_FILES['imagen_url']['tmp_name'], $targetFileName);
+        $imagen_url = $targetFileName;
+    } else {
+        $imagen_url = $_POST['imagen_url_existente'];
+    }
+
+    updatePokemon($pokemon_id, $nombre, $descripcion, $imagen_url, $region_id);
+
+    header('Location: ./pokemons.php');
     exit();
 }
