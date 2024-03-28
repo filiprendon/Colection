@@ -72,10 +72,11 @@ $tipos = selectTipo();
                         <p class="card-text">
                             <?php echo ($pokemon['descripcion']) ?>
                         </p>
+                        <a href="edit_card.php?id=<?php echo $pokemon['id']; ?>" class="btn btn-dark">Editar</a>
                         <form action="controller.php" method="post">
                             <div class="position-absolute bottom-0 end-0 p-2">
                                 <input type="hidden" name="id" value="<?php echo $pokemon['id']; ?>">
-                                <button type="submit" class="btn btn-dark" name="update">Editar</button>
+                                
                                 <button type="submit" class="btn btn-danger" name="delete">Borrar</button>
                             </div>
 

@@ -1,5 +1,4 @@
 <?php
-
 require_once('./db.php');
 
 if (isset($_POST['insert'])) {
@@ -26,11 +25,11 @@ if (isset($_POST['delete']))
     exit();
 }
 
-if (isset($_POST['update']))
+if (isset($_POST['submit']))
 {
     $id = $_POST['id'];
     updatePokemon($id, $_POST['nombre'], $_POST['descripcion'], $_POST['imagen_url'], $_POST['region_id']);
 
-    header('Location: ./edit_card.php');
+    header('Location: pokemons.php?msg=Pokemon Updated');
     exit();
 }

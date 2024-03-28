@@ -50,7 +50,7 @@ $regiones = selectRegion();
     </ul>
 
     <?php
-    if (isset($_POST['update'])) {
+    if (isset($_POST['submit'])) {
         $id = $_POST['id'];
         $nombre = $_POST['nombre'];
         $tipo = $_POST['tipo'];
@@ -61,7 +61,7 @@ $regiones = selectRegion();
         $sql = "UPDATE Pokemon SET nombre = '$nombre', descripcion = '$descripcion', imagen_url = '$imagen_url', region_id = '$region_id' WHERE id = '$id'";
         $result = mysqli_query($conexion, $sql);
         if($result){
-            echo "Carta actualizada correctamente";
+            header("Location: pokemons.php?msg=Pokemon Updated");
         }
     }
     ?>
@@ -112,7 +112,7 @@ $regiones = selectRegion();
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary" name="insert">Aceptar</button>
+            <button type="submit" class="btn btn-primary" name="submit">Aceptar</button>
             <button type="submit" class="btn btn-secondary">Cancelar</button>
         </form>
 

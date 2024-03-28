@@ -125,13 +125,7 @@ function updatePokemon($id, $nombre, $descripcion, $imagen_url, $region_id){
     $sentencia->bindParam(':descripcion', $descripcion);
     $sentencia->bindParam(':imagen_url', $imagen_url);
     $sentencia->bindParam(':region_id', $region_id);
-    // $sentencia->execute();
-    if ($sentencia->execute()) {
-        echo "fue un exito";
-    } else {
-        
-        print_r($sentencia->errorInfo());
-    }
+    $sentencia->execute();
 
     $conexion = closeDb();
 }
