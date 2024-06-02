@@ -1,7 +1,7 @@
 <?php
-require_once('./db.php');
+require_once ('./db.php');
 
-if(isset($_GET['id'])) {
+if (isset($_GET['id'])) {
     $pokemon_id = $_GET['id'];
 } else {
     header('Location: ./pokemons.php');
@@ -57,14 +57,16 @@ $regiones = selectRegion();
             <input type="hidden" name="id" value="<?php echo $pokemon_id; ?>">
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del Pokémon" value="<?php echo $pokemon['nombre']; ?>">
+                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del Pokémon"
+                    value="<?php echo $pokemon['nombre']; ?>">
             </div>
 
             <div class="mb-3">
                 <label for="tipo" class="form-label">Tipo</label>
                 <select name="tipo" class="form-select" id="tipo">
                     <?php foreach ($tipos as $tipo) { ?>
-                        <option value="<?php echo $tipo['id']; ?>" <?php if ($tipo['id'] == $pokemon['tipo_id']) echo 'selected'; ?>>
+                        <option value="<?php echo $tipo['id']; ?>" <?php if ($tipo['id'] == $pokemon['id'])
+                               echo 'selected'; ?>>
                             <?php echo $tipo['nombre']; ?>
                         </option>
                     <?php } ?>
@@ -75,7 +77,8 @@ $regiones = selectRegion();
                 <label for="region_id" class="form-label">Región</label>
                 <select name="region_id" class="form-select" id="region_id">
                     <?php foreach ($regiones as $region) { ?>
-                        <option value="<?php echo $region['id']; ?>" <?php if ($region['id'] == $pokemon['region_id']) echo 'selected'; ?>>
+                        <option value="<?php echo $region['id']; ?>" <?php if ($region['id'] == $pokemon['region_id'])
+                               echo 'selected'; ?>>
                             <?php echo $region['nombre']; ?>
                         </option>
                     <?php } ?>
@@ -85,7 +88,8 @@ $regiones = selectRegion();
             <div class="mb-3">
                 <label for="descripcion" class="form-label">Descripción</label>
                 <div class="form-floating">
-                    <textarea class="form-control" name="descripcion" placeholder="Describe al Pokémon" id="descripcion"><?php echo $pokemon['descripcion']; ?></textarea>
+                    <textarea class="form-control" name="descripcion" placeholder="Describe al Pokémon"
+                        id="descripcion"><?php echo $pokemon['descripcion']; ?></textarea>
                 </div>
             </div>
 

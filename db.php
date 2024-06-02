@@ -28,8 +28,41 @@ function closeDb()
 function selectPokemons()
 {
     $conexion = openDb();
-    $sentenciaText = "SELECT Pokemon.*, Region.nombre AS nombre_region FROM Pokemon
-                      INNER JOIN Region ON Pokemon.region_id = Region.id";
+    $sentenciaText = "
+        SELECT 
+            Pokemon.*, 
+            Region.nombre AS nombre_region, 
+            GROUP_CONCAT(Tipo.nombre SEPARATOR ', ') AS tipos
+        FROM 
+            Pokemon
+        INNER JOIN 
+            Region ON Pokemon.region_id = Region.id
+        LEFT JOIN 
+            Pokemon_Tipo ON Pokemon.id = Pokemon_Tipo.Pokemon_id
+        LEFT JOIN 
+            Tipo ON Pokemon_Tipo.tipo_id = Tipo.id
+        GROUP BY 
+            Pokemon.id, Region.nombre
+    ";
+    $sentencia = $conexion->prepare($sentenciaText);
+    $sentencia->execute();
+
+    $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+    $conexion = closeDb();
+
+    return $resultado;
+}
+
+
+
+function selectTipo()
+{
+    $conexion = openDb();
+
+
+    $sentenciaText = "select * from Tipo";
+
     $sentencia = $conexion->prepare($sentenciaText);
     $sentencia->execute();
 
@@ -40,13 +73,12 @@ function selectPokemons()
     return $resultado;
 }
 
-
-function selectTipo()
+function tipoConcreto($id)
 {
     $conexion = openDb();
 
 
-    $sentenciaText = "select * from Tipo";
+    $sentenciaText = `select * from Tipo WHERE id = $id`;
 
     $sentencia = $conexion->prepare($sentenciaText);
     $sentencia->execute();
