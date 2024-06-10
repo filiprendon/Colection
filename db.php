@@ -9,7 +9,7 @@ function openDb()
     // $password = "root";
 
     try {
-        $conexion = new PDO("mysql:host=$servername;dbname=pokemons", $username, $password);
+    $conexion = new PDO("mysql:host=$servername;dbname=pokemons", $username, $password);
         // set the PDO error mode to exception
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conexion->exec("set names utf8");
