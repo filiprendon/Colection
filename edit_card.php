@@ -63,15 +63,16 @@ $regiones = selectRegion();
 
             <div class="mb-3">
                 <label for="tipo" class="form-label">Tipo</label>
-                <select name="tipo" class="form-select" id="tipo">
+                <select name="tipo[]" class="form-select" id="tipo" multiple>
                     <?php foreach ($tipos as $tipo) { ?>
-                        <option value="<?php echo $tipo['id']; ?>" <?php if ($tipo['id'] == $pokemon['id'])
-                               echo 'selected'; ?>>
+                        <option value="<?php echo $tipo['id']; ?>">
                             <?php echo $tipo['nombre']; ?>
                         </option>
                     <?php } ?>
                 </select>
             </div>
+
+
 
             <div class="mb-3">
                 <label for="region_id" class="form-label">Región</label>

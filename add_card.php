@@ -50,16 +50,27 @@ $regiones = selectRegion();
 
 
     <div class="centered-container">
+        <?php require_once ('./mensajes.php');
+        $pokemon = $_SESSION['pokemon'] ?? [
+            'nombre' => '',
+            'descripcion' => '',
+            'imagen_url' => '',
+            'region_id' => ''
+        ];
+        unset($_SESSION['pokemon']);
+        ?>
         <h1 class="mb-4">Añadir Pokémon</h1>
         <form action="controller.php" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del Pokémon">
+                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del Pokémon"
+                    autofocus value="<?php echo $pokemon['nombre'] ?>">
+
             </div>
 
             <div class="mb-3">
                 <label for="tipo" class="form-label">Tipo</label>
-                <select name="tipo" class="form-select" id="tipo">
+                <select name="tipo[]" class="form-select" id="tipo" multiple>
                     <?php foreach ($tipos as $tipo) { ?>
                         <option value="<?php echo $tipo['id']; ?>">
                             <?php echo $tipo['nombre']; ?>
@@ -69,9 +80,10 @@ $regiones = selectRegion();
             </div>
 
 
+
             <div class="mb-3">
                 <label for="region_id" class="form-label">Región</label>
-                <select name="region_id" class="form-select" id="region_id">
+                <select name="region_id" class="form-select" id="region_id" value="<?php echo $pokemon['region_id'] ?>">
                     <?php foreach ($regiones as $region) { ?>
                         <option value="<?php echo $region['id']; ?>">
                             <?php echo $region['nombre']; ?>
@@ -83,15 +95,16 @@ $regiones = selectRegion();
             <div class="mb-3">
                 <label for="descripcion" class="form-label">Descripción</label>
                 <div class="form-floating">
-                    <textarea class="form-control" name="descripcion" placeholder="Describe al Pokémon"
-                        id="descripcion"></textarea>
+                    <textarea class="form-control" name="descripcion" placeholder="Describe al Pokémon" id="descripcion"
+                        value="<?php echo $pokemon['descripcion'] ?>"></textarea>
                 </div>
             </div>
 
             <div class="mb-3">
                 <label for="imagen_url" class="form-label">Foto del Pokémon</label>
                 <div class="input-group">
-                    <input type="file" class="form-control" name="imagen_url" id="imagen_url">
+                    <input type="file" class="form-control" name="imagen_url" id="imagen_url"
+                        value="<?php echo $pokemon['imagen_url'] ?>">
                     <label class="input-group-text" for="imagen_url">Subir foto</label>
                 </div>
             </div>
