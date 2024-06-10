@@ -24,70 +24,54 @@ $tipos = selectTipo();
 <body style="overflow-x: hidden;">
 
     <ul class="nav justify-content-center">
-        <!-- <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-        </li> -->
         <li class="nav-item">
             <a class="nav-link" href="pokemons.php">Ver Colección</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="add_card.php">Añadir Carta</a>
         </li>
-        <!-- <li class="nav-item">
-            <a class="nav-link" href="edit_card.php">Modificar Carta</a>
-        </li> -->
-        <!-- <li class="nav-item">
-            <a class="nav-link" href="delete_card.php">Eliminar Carta</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="pruebas.php">Pruebas</a>
-        </li> -->
     </ul>
 
 
 
     <div class="row row-cols-md-3 g-4">
-        <?php foreach ($pokemons as $pokemon) { ?>
-            <div class="d-flex justify-content-center">
-                <div class="card w-75" data-tilt>
-                    <img src="<?php echo $pokemon['imagen_url']; ?>" class="card-img-top"
-                        alt="<?php echo $pokemon['nombre']; ?>">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            Nombre:
-                            <?php echo ($pokemon['nombre']); ?>
-                            <br>
-                            <h5>ID:
-                                <?php echo ($pokemon['id']); ?>
-                            </h5>
+    <?php foreach ($pokemons as $pokemon) { ?>
+        <div class="d-flex justify-content-center">
+            <div class="card w-75" data-tilt>
+                <img src="<?php echo $pokemon['imagen_url']; ?>" class="card-img-top"
+                    alt="<?php echo $pokemon['nombre']; ?>">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Nombre:
+                        <?php echo ($pokemon['nombre']); ?>
+                        <br>
+                        <h5>ID:
+                            <?php echo ($pokemon['id']); ?>
                         </h5>
-                        <h6 class="card-text">Tipo:
-                            <?php foreach ($tipos as $tipo) {
-                                echo ($tipo['nombre']);
-                            } ?>
-                        </h6>
-                        <h6 class="card-text">Región:
-                            <?php echo ($pokemon['nombre_region']) ?>
-                        </h6>
-                        <p class="card-text">
-                            <?php echo ($pokemon['descripcion']) ?>
-                        </p>
+                    </h5>
+                    <h6 class="card-text">Tipo:
+                        <?php echo ($pokemon['tipos']); ?>
+                    </h6>
+                    <h6 class="card-text">Región:
+                        <?php echo ($pokemon['nombre_region']) ?>
+                    </h6>
+                    <p class="card-text">
+                        <?php echo ($pokemon['descripcion']) ?>
+                    </p>
 
-                        <form action="controller.php" method="post">
-                            <div class="position-absolute bottom-0 end-0 p-2">
-                                <input type="hidden" name="id" value="<?php echo $pokemon['id']; ?>">
-                                <a href="edit_card.php?id=<?php echo $pokemon['id']; ?>" class="btn btn-dark">Editar</a>
-                                <button type="submit" class="btn btn-danger" name="delete">Borrar</button>
-                            </div>
-
-                        </form>
-
-                    </div>
+                    <form action="controller.php" method="post">
+                        <div class="position-absolute bottom-0 end-0 p-2">
+                            <input type="hidden" name="id" value="<?php echo $pokemon['id']; ?>">
+                            <a href="edit_card.php?id=<?php echo $pokemon['id']; ?>" class="btn btn-dark">Editar</a>
+                            <button type="submit" class="btn btn-danger" name="delete">Borrar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
+        </div>
+    <?php } ?>
+</div>
 
-        <?php } ?>
-    </div>
 
 
 
